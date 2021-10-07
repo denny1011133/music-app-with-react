@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/Header';
-import Musics from './components/Musics'
+import Genre from './components/Genre';
+import Musics from './components/Musics';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react'
 function App() {
@@ -9,32 +10,38 @@ function App() {
     id: uuidv4(),
     name: "你好",
     description: "text",
-    isShown: true
+    isShown: true,
+    type: "pop"
   }, {
     id: uuidv4(),
     name: "不好",
     description: "text",
-    isShown: false
+    isShown: false,
+    genre: "pop"
   }, {
     id: uuidv4(),
     name: "123",
     description: "text",
-    isShown: false
+    isShown: false,
+    genre: "pop"
   }, {
     id: uuidv4(),
     name: "123",
     description: "text",
-    isShown: true
+    isShown: true,
+    genre: "pop"
   }, {
     id: uuidv4(),
     name: "123",
     description: "text",
-    isShown: true
+    isShown: true,
+    genre: "pop"
   }, {
     id: uuidv4(),
     name: "123",
     description: "text",
-    isShown: true
+    isShown: true,
+    genre: "pop"
   }
   ]
 
@@ -65,6 +72,7 @@ function App() {
   return (
     <div className="App">
       <Header handleSearch={handleSearch} />
+      <Genre />
       <Musics albums={albums} />
     </div>
   );

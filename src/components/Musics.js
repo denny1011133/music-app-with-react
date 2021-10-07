@@ -4,7 +4,7 @@ import { Row, Col, Card } from 'react-bootstrap'
 function Musics({ albums }) {
 
     return <Row xs={1} md={2} className="g-4">
-        {albums.map((album) => (
+        {albums.map(album => (
             <Col key={album.id} style={{ display: album.isShown ? "block" : "none" }}>
                 <Card>
                     <Card.Img variant="top" src="holder.js/100px160" />
@@ -19,6 +19,5 @@ function Musics({ albums }) {
         ))}
     </Row>
 }
-
 
 export default Musics
