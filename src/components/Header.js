@@ -1,6 +1,6 @@
-import { Navbar, Nav, NavDropdown, FormControl, Form,Button, Container } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, FormControl, Form, Container } from 'react-bootstrap'
 
-function Header() {
+function Header({handleSearch,inputSearch}) {
     return <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
             <Navbar.Brand href="#home">
@@ -38,8 +38,9 @@ function Header() {
                         placeholder="Search"
                         className="mr-2"
                         aria-label="Search"
+                        onInput={handleSearch}
                     />
-                    <Button variant="outline-success">Search</Button>
+
                 </Form>
             </Navbar.Collapse>
         </Container>
