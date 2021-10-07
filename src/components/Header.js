@@ -1,4 +1,5 @@
 import { Navbar, Nav, FormControl, Form, Container } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Header({ handleSearch }) {
     return <Navbar bg="dark" variant="dark" expand="lg">
@@ -11,7 +12,7 @@ function Header({ handleSearch }) {
                     height="30"
                     className="d-inline-block align-top"
                 />
-                React Bootstrap
+                React Bootstrap<FontAwesomeIcon icon="search" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">

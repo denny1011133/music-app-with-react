@@ -4,6 +4,12 @@ import Genre from './components/Genre';
 import Musics from './components/Musics';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, faSearch)
+
 function App() {
 
   const dummyData = [{
