@@ -9,7 +9,7 @@
     background-color: #F9F9F9;
     overflow-x      : hidden;
     padding-left    : 0.5rem;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-right    : 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* The navigation menu links */
@@ -25,6 +25,8 @@
 .sidenav a:hover {
     color: #000000;
 }
+
+
 
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
