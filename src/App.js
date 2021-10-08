@@ -1,7 +1,8 @@
 import './App.css';
-import Footer from './components/Footer';
 import Genre from './components/Genre';
 import Musics from './components/Musics';
+import SideBar from './components/SideBar';
+import Footer from './components/Footer';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -9,7 +10,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 
-library.add(fab, fas,far)
+library.add(fab, fas, far)
 
 function App() {
 
@@ -77,7 +78,9 @@ function App() {
   }
 
   return (
-    <div className="App"> 
+    <div className="App">
+
+      <SideBar />
       <Genre />
       <Musics albums={albums} />
       <Footer />

@@ -1,21 +1,14 @@
-import { Navbar, Nav, Container } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Navbar, Container, Button } from 'react-bootstrap'
 
 function Footer() {
-    return <Navbar bg="dark" variant="dark" fixed="bottom">
+    return <Navbar className="footer" fixed="bottom">
         <Container>
-            <Navbar.Brand href="#home">
-            <FontAwesomeIcon icon="check-square" />
-                React Bootstrap
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
-                <Nav
-                    className="mr-auto my-2 my-lg-0"
-                    style={{ maxHeight: '100px' }}
-                    navbarScroll
-                >
-                </Nav>
+            <Navbar.Brand href="#home" style={{color:"white"}}>7,500 萬首歌曲，免費暢聽 3 個月。</Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+                <Navbar.Text>
+                    <Button variant="light">免費試用</Button>{' '}
+                </Navbar.Text>
             </Navbar.Collapse>
         </Container>
     </Navbar>
