@@ -10,6 +10,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
+import { Switch, Route } from "react-router-dom";
 
 library.add(fab, fas, far);
 
@@ -77,7 +78,20 @@ function App() {
     },
   ];
 
-  const dummyMyFavorites = [];
+  const dummyMyFavorites = [
+    {
+      id: uuidv4(),
+      name: "電火王",
+      artist: "美秀集團",
+      description:
+        "《電火王》是美秀集團的第一張專輯，集結了美秀成軍兩年來的精彩作品。開場便以一段自製樂器solo宣告電火王的降世，緊接著主打歌《電火王》則道出了本專輯最核心的maker精神，前六首歌曲皆為台語創作，透過不同面向還原我們心中對自身文化的想像，而倒數三首歌《米兒》、《小老婆》、《擋一根》更是一個完整的故事，敘述電火王在愛情的旅途中最真實的情慾，以及最深的懊悔。Bonus Track《魯之歌》則是主唱狗柏寫給吉他手修齊的生日禮物，充滿了團員間的愛與嘲諷。",
+      isShown: true,
+      isAdd: false,
+      type: "pop",
+      image:
+        "https://is5-ssl.mzstatic.com/image/thumb/Music118/v4/20/47/e6/2047e645-bbca-01b5-8b7e-3a689eaf0038/4718009707924.jpg/500x500bb.webp",
+    },
+  ];
 
   const [albums, setAlbums] = useState(dummyAlbums);
 
@@ -109,9 +123,14 @@ function App() {
   return (
     <div className="App">
       <SideBar handleSearch={handleSearch} />
-      <Genre />
-      <Musics albums={albums} handleAdd={handleAdd} />
-      <MyFavorites myFavorites={myFavorites} />
+      <Switch>
+        <Route path="/albums">
+          <Musics albums={albums} handleAdd={handleAdd} />
+        </Route>
+        <Route path="/myFavorites">
+          <MyFavorites myFavorites={myFavorites} />
+        </Route>
+      </Switch>
       <Footer />
     </div>
   );

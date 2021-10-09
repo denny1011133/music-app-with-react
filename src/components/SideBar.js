@@ -12,7 +12,7 @@ import { Form, Button } from "react-bootstrap";
 function SideBar({ handleSearch }) {
   return (
     <div className="sidenav px-2">
-      <a href="https://www.spotify.com/tw/" className="fw-bold">
+      <a href="/" className="fw-bold">
         <FontAwesomeIcon icon={faSpotify} size="lg" />
         Spotify
       </a>
@@ -23,13 +23,25 @@ function SideBar({ handleSearch }) {
         placeholder="搜尋"
       />
       <div className="d-flex flex-column justify-content-evenly align-items-baseline gap-3 mt-2">
-        <Button variant="black" style={{ color: "rgb(179,179,179)" }}>
+        <Button
+          href="/"
+          variant="black"
+          style={{ "font-size": "1rem", color: "rgb(179,179,179)" }}
+        >
           <FontAwesomeIcon icon={faPlayCircle} /> 立即聆聽
         </Button>
-        <Button variant="black" style={{ color: "rgb(179,179,179)" }}>
+        <Button
+          href="/albums"
+          variant="black"
+          style={{ "font-size": "1rem", color: "rgb(179,179,179)" }}
+        >
           <FontAwesomeIcon icon={faColumns} /> 瀏覽
         </Button>
-        <Button variant="black" style={{ color: "rgb(179,179,179)" }}>
+        <Button
+          href="/myFavorites"
+          variant="black"
+          style={{ "font-size": "1rem", color: "rgb(179,179,179)" }}
+        >
           <FontAwesomeIcon icon={faHeart} /> 我的收藏
         </Button>
       </div>

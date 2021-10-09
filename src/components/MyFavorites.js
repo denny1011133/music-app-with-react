@@ -1,34 +1,34 @@
 import { Table } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function MyFavorites() {
+function MyFavorites({ myFavorites }) {
   return (
     <Table responsive striped bordered hover variant="dark">
       <thead>
         <tr>
           <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>專輯名稱</th>
+          <th>演唱者</th>
+          <th>類型</th>
+          <th>移除</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {myFavorites.map((i) => {
+          return (
+            <tr>
+              <td>{i.id}</td>
+              <td>{i.name}</td>
+              <td>{i.artist}</td>
+              <td>{i.type}</td>
+              <td>
+                {" "}
+                <FontAwesomeIcon icon={faTrash} size="lg" />
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </Table>
   );
