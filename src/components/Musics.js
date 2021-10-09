@@ -1,23 +1,44 @@
-import { Row, Col, Card } from 'react-bootstrap'
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Row, Col, Card } from "react-bootstrap";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 function Musics({ albums }) {
-
-    return <Row xs={1} md={2} className="g-4">
-        {albums.map(album => (
-            <Col key={album.id} style={{ display: album.isShown ? "block" : "none" }}>
-                <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                        <Card.Title>{album.name}</Card.Title>
-                        <Card.Text>
-                            {album.description}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
-        ))}
+  return (
+    <Row
+      xs={1}
+      md={3}
+      className="g-4"
+      style={{
+        marginLeft: "224.8px",
+        marginBottom: "100px",
+      }}
+    >
+      {albums.map((album) => (
+        <Col
+          key={album.id}
+          style={{
+            display: album.isShown ? "block" : "none",
+          }}
+        >
+          <Card
+            style={{ backgroundColor: "#E8E8E8" }}
+            className="border-dark h-100"
+          >
+            <Card.Img variant="top" src={album.image} />
+            <Card.Body>
+              <Card.Title>{album.name}</Card.Title>
+              <Card.Text>{album.description}</Card.Text>
+            </Card.Body>
+            <Card.Footer className="text-muted">
+              {" "}
+              <a href="#" class="btn btn-primary">
+                <FontAwesomeIcon icon={faPlus} /> 收藏
+              </a>
+            </Card.Footer>
+          </Card>
+        </Col>
+      ))}
     </Row>
+  );
 }
 
-export default Musics
+export default Musics;
