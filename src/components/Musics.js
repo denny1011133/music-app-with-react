@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col, Card } from "react-bootstrap";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-function Musics({ albums }) {
+
+function Musics({ albums, handleAdd }) {
   return (
     <Row
       xs={1}
@@ -30,7 +31,11 @@ function Musics({ albums }) {
             </Card.Body>
             <Card.Footer className="text-muted">
               {" "}
-              <a href="#" class="btn btn-primary">
+              <a
+                onClick={() => handleAdd(album.id)}
+                className="btn btn-primary"
+                style={{ display: album.isAdd ? "none" : "inline-block" }}
+              >
                 <FontAwesomeIcon icon={faPlus} /> 收藏
               </a>
             </Card.Footer>
