@@ -77,7 +77,6 @@ function App() {
         "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b4/29/21/b4292149-5220-8da4-a397-671c003b84f0/1._1500_-_-.jpg/500x500bb.webp",
     },
   ];
-
   const dummyMyFavorites = [
     {
       id: uuidv4(),
@@ -91,26 +90,40 @@ function App() {
       image:
         "https://is5-ssl.mzstatic.com/image/thumb/Music118/v4/20/47/e6/2047e645-bbca-01b5-8b7e-3a689eaf0038/4718009707924.jpg/500x500bb.webp",
     },
+    {
+      id: uuidv4(),
+      name: "兄弟沒夢不應該",
+      artist: "拍謝少年",
+      description:
+        "在上山下海、提名金曲獎的生猛《海口味》之後，拍謝少年回歸日時上班領薪水，暗時熱炒唸歌詩的青年生活。少年仔炙熱的橫衝直撞，逐漸轉化成青年內斂的透徹目光；從台語搖滾繼續出發，拍謝少年精煉寫作能力，探索更多樣化的編曲可能性，在本格的豪邁音色中，加入藍調民謠、廟會唸歌、重唱和聲等元素，更以同步錄音的製作方式，保留拍謝少年現場演出生猛氣味。",
+      isShown: true,
+      isAdd: false,
+      type: "punk",
+      image:
+        "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/27/c9/ee/27c9eeb2-333a-5470-29ad-dfb2c9d9028b/887375519852.jpg/500x500bb.webp",
+    },
   ];
+  console.log(JSON.stringify(dummyMyFavorites));
 
   const [albums, setAlbums] = useState(dummyAlbums);
-
+  const [inputValue, setInputValue] = useState("");
   const [myFavorites, setMyFavorites] = useState(dummyMyFavorites);
 
   const handleSearch = function (e) {
-    const inputValue = e.target.value;
-
-    setAlbums((preAlbums) => {
-      return preAlbums.map((i) => {
-        if (i.name.includes(inputValue)) {
-          i.isShown = true;
-          return i;
-        } else {
-          i.isShown = false;
-          return i;
-        }
+    if (e.key === "Enter") {
+      setInputValue(e.target.value);
+      setAlbums((preAlbums) => {
+        return preAlbums.map((i) => {
+          if (i.name.includes(inputValue)) {
+            i.isShown = true;
+            return i;
+          } else {
+            i.isShown = false;
+            return i;
+          }
+        });
       });
-    });
+    }
   };
 
   const handleAdd = function (id) {
@@ -122,10 +135,16 @@ function App() {
 
   return (
     <div className="App">
-      <SideBar handleSearch={handleSearch} />
+      <SideBar />
       <Switch>
         <Route path="/albums">
-          <Musics albums={albums} handleAdd={handleAdd} />
+          <Musics
+            inputValue={inputValue}
+            albums={albums}
+            handleAdd={handleAdd}
+            handleSearch={handleSearch}
+            inputValue={inputValue}
+          />
         </Route>
         <Route path="/myFavorites">
           <MyFavorites myFavorites={myFavorites} />
