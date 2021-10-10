@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function MyFavorites({ myFavorites }) {
   return (
@@ -24,7 +24,7 @@ function MyFavorites({ myFavorites }) {
               <td>{i.type}</td>
               <td>
                 {" "}
-                <FontAwesomeIcon icon={faTrash} size="lg" />
+                <FontAwesomeIcon icon={faTimes} size="lg" />
               </td>
             </tr>
           );
