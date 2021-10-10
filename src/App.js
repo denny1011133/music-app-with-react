@@ -4,7 +4,7 @@ import Musics from "./components/Musics";
 import SideBar from "./components/SideBar";
 import MyFavorites from "./components/MyFavorites";
 import Footer from "./components/Footer";
-import NoMatch from "./components/Nomatch";
+import NoMatch from "./components/NoMatch";
 
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
