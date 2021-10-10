@@ -4,6 +4,8 @@ import Musics from "./components/Musics";
 import SideBar from "./components/SideBar";
 import MyFavorites from "./components/MyFavorites";
 import Footer from "./components/Footer";
+import NoMatch from "./components/Nomatch";
+
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -71,6 +73,14 @@ function App() {
     });
   };
 
+  const handleDelete = function (id) {
+    const targetAlbum = albums.filter((i) => i.id === id);
+
+    setMyFavorites((preMyFavorites) =>
+      preMyFavorites.filter((i) => i.id !== id)
+    );
+  };
+
   useEffect(() => {
     axios.get("http://localhost:3002/albums").then((res) => {
       setAlbums(res.data);
@@ -94,7 +104,10 @@ function App() {
           />
         </Route>
         <Route path="/myFavorites">
-          <MyFavorites myFavorites={myFavorites} />
+          <MyFavorites handleDelete={handleDelete} myFavorites={myFavorites} />
+        </Route>
+        <Route path="*">
+          <NoMatch />
         </Route>
       </Switch>
       <Footer />

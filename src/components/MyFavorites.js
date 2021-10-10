@@ -2,7 +2,7 @@ import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-function MyFavorites({ myFavorites }) {
+function MyFavorites({ myFavorites, handleDelete }) {
   return (
     <Table responsive striped bordered hover variant="dark">
       <thead>
@@ -17,14 +17,17 @@ function MyFavorites({ myFavorites }) {
       <tbody>
         {myFavorites.map((i) => {
           return (
-            <tr>
+            <tr key={i.id}>
               <td>{i.id}</td>
               <td>{i.name}</td>
               <td>{i.artist}</td>
               <td>{i.type}</td>
               <td>
-                {" "}
-                <FontAwesomeIcon icon={faTimes} size="lg" />
+                <FontAwesomeIcon
+                  onClick={() => handleDelete(i.id)}
+                  icon={faTimes}
+                  size="lg"
+                />
               </td>
             </tr>
           );
