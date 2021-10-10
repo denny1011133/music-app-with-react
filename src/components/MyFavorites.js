@@ -4,7 +4,14 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function MyFavorites({ myFavorites, handleDelete }) {
   return (
-    <Table responsive striped bordered hover variant="dark">
+    <Table
+      style={{ marginLeft: "224.8px" }}
+      responsive
+      striped
+      bordered
+      hover
+      variant="dark"
+    >
       <thead>
         <tr>
           <th>#</th>

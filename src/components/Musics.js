@@ -6,13 +6,12 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
   const filterResult = albums.every((i) => {
     return i.isShown === false;
   });
-  //無任何符合相關資料
   if (filterResult) {
     return (
       <>
         <Form.Control
           onKeyDown={handleSearch}
-          type="text"
+          type="search"
           placeholder="搜尋"
           style={{ maxWidth: "500px", margin: "0 auto" }}
         />
@@ -27,7 +26,7 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
       <>
         <Form.Control
           onKeyDown={handleSearch}
-          type="text"
+          type="search"
           placeholder="搜尋"
           style={{ maxWidth: "500px", margin: "10px auto" }}
         />
@@ -58,13 +57,13 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
                 </Card.Body>
                 <Card.Footer className="text-muted">
                   {" "}
-                  <a
+                  <button
                     onClick={() => handleAdd(album.id)}
                     className="btn btn-primary"
                     style={{ display: album.isAdd ? "none" : "inline-block" }}
                   >
                     <FontAwesomeIcon icon={faPlus} /> 收藏
-                  </a>
+                  </button>
                 </Card.Footer>
               </Card>
             </Col>
