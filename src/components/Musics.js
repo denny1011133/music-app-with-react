@@ -13,10 +13,21 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
           onInput={handleSearch}
           type="search"
           placeholder="搜尋"
-          style={{ maxWidth: "500px", margin: "10px auto" }}
+          style={{
+            width: "30vw",
+            margin: "10px 150px",
+            marginLeft: "240px",
+          }}
           value={inputValue}
         />
-        <div style={{ maxWidth: "500px", margin: "0 auto" }}>
+        <div
+          style={{
+            width: "30vw",
+            margin: "10px 150px",
+            marginLeft: "240px",
+            wordWrap: "break-word",
+          }}
+        >
           <h1>查無與{inputValue}相關的結果</h1>
           <p>請確認所有拼字正確．或使用較少．或使用較少或不同的關鍵字．</p>
         </div>
@@ -29,7 +40,11 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
           onInput={handleSearch}
           type="search"
           placeholder="搜尋"
-          style={{ maxWidth: "500px", margin: "10px auto" }}
+          style={{
+            width: "30vw",
+            margin: "10px 150px",
+            marginLeft: "240px",
+          }}
           value={inputValue}
         />
         <Row
