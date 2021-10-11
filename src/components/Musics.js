@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col, Card, Form } from "react-bootstrap";
+import clsx from "clsx";
 
 function Musics({ albums, handleSearch, handleAdd, inputValue }) {
   const filterResult = albums.every((i) => {
@@ -9,10 +10,11 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
     return (
       <>
         <Form.Control
-          onKeyDown={handleSearch}
+          onInput={handleSearch}
           type="search"
           placeholder="搜尋"
-          style={{ maxWidth: "500px", margin: "0 auto" }}
+          style={{ maxWidth: "500px", margin: "10px auto" }}
+          value={inputValue}
         />
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
           <h1>查無與{inputValue}相關的結果</h1>
@@ -24,10 +26,11 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
     return (
       <>
         <Form.Control
-          onKeyDown={handleSearch}
+          onInput={handleSearch}
           type="search"
           placeholder="搜尋"
           style={{ maxWidth: "500px", margin: "10px auto" }}
+          value={inputValue}
         />
         <Row
           xs={1}
@@ -58,7 +61,9 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
                   {" "}
                   <button
                     onClick={() => handleAdd(album.id)}
-                    className="btn btn-success"
+                    className={clsx("btn btn-success", {
+                      disabled: album.isAdd,
+                    })}
                   >
                     <FontAwesomeIcon
                       icon={[`${album.isAdd ? "fas" : "far"}`, "heart"]}

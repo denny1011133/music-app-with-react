@@ -16,83 +16,79 @@ import axios from "axios";
 library.add(fab, fas, far);
 
 function App() {
-  const [albums, setAlbums] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [albums, setAlbums] = useState([]);
   const [myFavorites, setMyFavorites] = useState([]);
 
   const handleSearch = function (e) {
-    if (e.key === "Enter") {
-      setInputValue(e.target.value);
-      setAlbums((preAlbums) => {
-        return preAlbums.map((i) => {
-          if (i.name.includes(inputValue)) {
-            i.isShown = true;
-            return i;
-          } else {
-            i.isShown = false;
-            return i;
-          }
-        });
+    setInputValue(e.target.value);
+
+    setAlbums((preAlbums) => {
+      return preAlbums.map((i) => {
+        if (i.name.includes(e.target.value)) {
+          i.isShown = true;
+          return i;
+        } else {
+          i.isShown = false;
+          return i;
+        }
       });
-    }
+    });
   };
 
   const handleAdd = function (id) {
     const targetAlbum = albums.filter((i) => i.id === id);
     const [{ isShown, isAdd, ...data }] = targetAlbum;
-    axios
-      .post("http://localhost:3002/myFavorites", data)
-      .then((res) => {
-        setMyFavorites((preMyFavorites) => {
-          return [...preMyFavorites, res.data];
-        });
-      })
-      .then((res) => {
-        axios
-          .patch(`http://localhost:3002/albums/${id}`, { isAdd: true })
-          .then((res) => {
-            const data = res.data;
-            setAlbums((preAlbums) => {
-              const updateAlbums = preAlbums.map((i) => {
-                if (i.id === id) {
-                  i.isAdd = true;
-                  return i;
-                } else {
-                  return i;
-                }
-              });
-              return updateAlbums;
-            });
-          });
+
+    async function addToMyFavorite() {
+      await axios.post("http://localhost:3002/myFavorites", data);
+
+      setMyFavorites((preMyFavorites) => {
+        return [...preMyFavorites, data];
       });
+
+      await axios.patch(`http://localhost:3002/albums/${id}`, {
+        isAdd: true,
+      });
+
+      setAlbums((preAlbums) => {
+        const updateAlbums = preAlbums.map((i) => {
+          if (i.id === id) {
+            i.isAdd = true;
+            return i;
+          } else {
+            return i;
+          }
+        });
+        return updateAlbums;
+      });
+    }
+    addToMyFavorite();
   };
 
   const handleDelete = function (id) {
-    axios
-      .delete(`http://localhost:3002/myFavorites/${id}`)
-      .then((res) => {
-        setMyFavorites((preMyFavorites) =>
-          preMyFavorites.filter((i) => i.id !== id)
-        );
-      })
-      .then((res) => {
-        axios
-          .patch(`http://localhost:3002/albums/${id}`, { isAdd: false })
-          .then((res) => {
-            const data = res.data;
-            setAlbums((preAlbums) => {
-              const updateAlbums = preAlbums.map((i) => {
-                if (i.id === id) {
-                  i.isAdd = false;
-                  return i;
-                } else {
-                  return i;
-                }
-              });
-              return updateAlbums;
-            });
-          });
+    async function deleteFromMyFavorite() {
+      await axios.delete(`http://localhost:3002/myFavorites/${id}`);
+
+      setMyFavorites((preMyFavorites) =>
+        preMyFavorites.filter((i) => i.id !== id)
+      );
+
+      await axios.patch(`http://localhost:3002/albums/${id}`, { isAdd: false });
+
+      setAlbums((preAlbums) => {
+        const updateAlbums = preAlbums.map((i) => {
+          if (i.id === id) {
+            i.isAdd = false;
+            return i;
+          } else {
+            return i;
+          }
+        });
+        return updateAlbums;
       });
+    }
+    deleteFromMyFavorite();
   };
 
   useEffect(() => {
@@ -117,7 +113,6 @@ function App() {
             albums={albums}
             handleAdd={handleAdd}
             handleSearch={handleSearch}
-            inputValue={inputValue}
           />
         </Route>
         <Route path="/myFavorites">
