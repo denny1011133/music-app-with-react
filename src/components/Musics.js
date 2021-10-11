@@ -50,6 +50,7 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
         <Row
           xs={1}
           md={3}
+          lg={4}
           className="g-4"
           style={{
             marginLeft: "224.8px",
