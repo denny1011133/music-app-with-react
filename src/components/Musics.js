@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col, Card, Form } from "react-bootstrap";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Musics({ albums, handleSearch, handleAdd, inputValue }) {
   const filterResult = albums.every((i) => {
@@ -59,10 +58,12 @@ function Musics({ albums, handleSearch, handleAdd, inputValue }) {
                   {" "}
                   <button
                     onClick={() => handleAdd(album.id)}
-                    className="btn btn-primary"
-                    style={{ display: album.isAdd ? "none" : "inline-block" }}
+                    className="btn btn-success"
                   >
-                    <FontAwesomeIcon icon={faPlus} /> 收藏
+                    <FontAwesomeIcon
+                      icon={[`${album.isAdd ? "fas" : "far"}`, "heart"]}
+                    />
+                    {album.isAdd ? " 已收藏" : " 收藏"}
                   </button>
                 </Card.Footer>
               </Card>

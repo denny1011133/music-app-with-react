@@ -5,8 +5,6 @@ import Musics from "./components/Musics";
 import MyFavorites from "./components/MyFavorites";
 import Footer from "./components/Footer";
 import NoMatch from "./components/NoMatch";
-
-import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -19,7 +17,7 @@ library.add(fab, fas, far);
 
 function App() {
   const [albums, setAlbums] = useState([]);
-  const [inputValue, setInputValue] = useState([]);
+  const [inputValue, setInputValue] = useState("");
   const [myFavorites, setMyFavorites] = useState([]);
 
   const handleSearch = function (e) {
@@ -41,21 +39,60 @@ function App() {
 
   const handleAdd = function (id) {
     const targetAlbum = albums.filter((i) => i.id === id);
+    const [{ isShown, isAdd, ...data }] = targetAlbum;
     axios
-      .post("http://localhost:3002/myFavorites", ...targetAlbum)
+      .post("http://localhost:3002/myFavorites", data)
       .then((res) => {
         setMyFavorites((preMyFavorites) => {
-          return [...preMyFavorites, ...targetAlbum];
+          return [...preMyFavorites, res.data];
         });
+      })
+      .then((res) => {
+        axios
+          .patch(`http://localhost:3002/albums/${id}`, { isAdd: true })
+          .then((res) => {
+            const data = res.data;
+            setAlbums((preAlbums) => {
+              const updateAlbums = preAlbums.map((i) => {
+                if (i.id === id) {
+                  i.isAdd = true;
+                  return i;
+                } else {
+                  return i;
+                }
+              });
+              return updateAlbums;
+            });
+          });
       });
   };
 
   const handleDelete = function (id) {
-    axios.delete(`http://localhost:3002/myFavorites/${id}`).then((res) => {
-      setMyFavorites((preMyFavorites) =>
-        preMyFavorites.filter((i) => i.id !== id)
-      );
-    });
+    axios
+      .delete(`http://localhost:3002/myFavorites/${id}`)
+      .then((res) => {
+        setMyFavorites((preMyFavorites) =>
+          preMyFavorites.filter((i) => i.id !== id)
+        );
+      })
+      .then((res) => {
+        axios
+          .patch(`http://localhost:3002/albums/${id}`, { isAdd: false })
+          .then((res) => {
+            const data = res.data;
+            setAlbums((preAlbums) => {
+              const updateAlbums = preAlbums.map((i) => {
+                if (i.id === id) {
+                  i.isAdd = false;
+                  return i;
+                } else {
+                  return i;
+                }
+              });
+              return updateAlbums;
+            });
+          });
+      });
   };
 
   useEffect(() => {
