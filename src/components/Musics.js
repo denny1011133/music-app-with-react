@@ -56,12 +56,13 @@ function Musics({ albums, handleSearch, handleAdd, inputValue, isloading }) {
           />
           <Row
             xs={1}
+            sm={2}
             md={3}
-            lg={4}
             className="g-4"
             style={{
               marginLeft: "224.8px",
               marginBottom: "100px",
+              width: "70vw",
             }}
           >
             {albums.map((album) => (
@@ -69,10 +70,14 @@ function Musics({ albums, handleSearch, handleAdd, inputValue, isloading }) {
                 key={album.id}
                 style={{
                   display: album.isShown ? "block" : "none",
+
                 }}
               >
                 <Card
-                  style={{ backgroundColor: "#E8E8E8" }}
+                  style={{
+                    backgroundColor: "#E8E8E8",
+                  }}
+
                   className="border-dark h-100"
                 >
                   <Card.Img variant="top" src={album.image} />
@@ -80,8 +85,7 @@ function Musics({ albums, handleSearch, handleAdd, inputValue, isloading }) {
                     <Card.Title>{album.name}</Card.Title>
                     <Card.Text>{album.description}</Card.Text>
                   </Card.Body>
-                  <Card.Footer className="text-muted">
-                    {" "}
+                  <Card.Footer>
                     <button
                       onClick={() => handleAdd(album.id)}
                       className={clsx("btn btn-success", {
