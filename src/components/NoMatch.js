@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function NoMatch() {
   return (
     <div
@@ -13,14 +15,7 @@ function NoMatch() {
       <div>
         <h1>此頁面不存在。</h1>
         <p>我們找不到你正在尋找的網頁。或許我們的常見問題或社群幫得上忙？</p>
-        <a
-          href="/"
-          onClick={() => {
-            window.history.back();
-          }}
-        >
-          返回首頁
-        </a>
+        <Link to="/"> 導回首頁</Link>
       </div>
       <img
         style={{ minWidth: "200px" }}

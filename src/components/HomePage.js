@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HomePage() {
   return (
     <div
@@ -11,7 +13,8 @@ function HomePage() {
       }}
     >
       <h1>午安，奕德。</h1>
-      <a href="/albums">前往瀏覽音樂庫</a>
+      <Link to="/albums"> 前往瀏覽音樂庫</Link>
+
     </div>
   );
 }

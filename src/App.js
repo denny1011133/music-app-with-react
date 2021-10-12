@@ -16,9 +16,11 @@ import axios from "axios";
 library.add(fab, fas, far);
 
 function App() {
+
   const [inputValue, setInputValue] = useState("");
   const [albums, setAlbums] = useState([]);
   const [myFavorites, setMyFavorites] = useState([]);
+  const [isloading, setIsloading] = useState(true)
 
   const handleSearch = function (e) {
     setInputValue(e.target.value);
@@ -91,17 +93,21 @@ function App() {
     deleteFromMyFavorite();
   };
 
+  //元件渲染完後才會呼叫 useEffect 內的 function
+  //元件渲染完後，如果 dependencies 有改變，才會呼叫 useEffect 內的 function
   useEffect(() => {
-    axios.get("http://localhost:3002/albums").then((res) => {
-      setAlbums(res.data);
-    });
-    axios.get("http://localhost:3002/myFavorites").then((res) => {
-      setMyFavorites(res.data);
-    });
+
+    Promise.all([axios.get("http://localhost:3002/albums"), axios.get("http://localhost:3002/myFavorites")])
+      .then(res => {
+        setAlbums(res[0].data);
+        setMyFavorites(res[1].data);
+        setIsloading(false)
+      });
   }, []);
 
   return (
     <div className="App">
+
       <SideBar />
       <Switch>
         <Route exact path="/">
@@ -113,10 +119,11 @@ function App() {
             albums={albums}
             handleAdd={handleAdd}
             handleSearch={handleSearch}
+            isloading={isloading}
           />
         </Route>
         <Route path="/myFavorites">
-          <MyFavorites handleDelete={handleDelete} myFavorites={myFavorites} />
+          <MyFavorites handleDelete={handleDelete} myFavorites={myFavorites} isloading={isloading} />
         </Route>
         <Route path="*">
           <NoMatch />
