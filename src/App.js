@@ -11,7 +11,9 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { Switch, Route } from "react-router-dom";
-import axios from "axios";
+import { getMyFavorties, addToMyFavorties, deleteFromMyFavorties } from "./apis/myFavorite"
+import { getAlLMusics, switchIsAddToTrue, switchIsAddToFalse } from "./apis/albums"
+
 
 library.add(fab, fas, far);
 
@@ -39,19 +41,18 @@ function App() {
   };
 
   const handleAdd = function (id) {
+
     const targetAlbum = albums.filter((i) => i.id === id);
     const [{ isShown, isAdd, ...data }] = targetAlbum;
 
     async function addToMyFavorite() {
-      await axios.post("http://localhost:3002/myFavorites", data);
+      await addToMyFavorties(data)
 
       setMyFavorites((preMyFavorites) => {
         return [...preMyFavorites, data];
       });
 
-      await axios.patch(`http://localhost:3002/albums/${id}`, {
-        isAdd: true,
-      });
+      await switchIsAddToTrue(id)
 
       setAlbums((preAlbums) => {
         const updateAlbums = preAlbums.map((i) => {
@@ -70,13 +71,14 @@ function App() {
 
   const handleDelete = function (id) {
     async function deleteFromMyFavorite() {
-      await axios.delete(`http://localhost:3002/myFavorites/${id}`);
+
+      await deleteFromMyFavorties(id)
 
       setMyFavorites((preMyFavorites) =>
         preMyFavorites.filter((i) => i.id !== id)
       );
 
-      await axios.patch(`http://localhost:3002/albums/${id}`, { isAdd: false });
+      await switchIsAddToFalse(id)
 
       setAlbums((preAlbums) => {
         const updateAlbums = preAlbums.map((i) => {
@@ -96,18 +98,19 @@ function App() {
   //元件渲染完後才會呼叫 useEffect 內的 function
   //元件渲染完後，如果 dependencies 有改變，才會呼叫 useEffect 內的 function
   useEffect(() => {
-
-    Promise.all([axios.get("http://localhost:3002/albums"), axios.get("http://localhost:3002/myFavorites")])
+    Promise.all([getAlLMusics(), getMyFavorties()])
       .then(res => {
         setAlbums(res[0].data);
         setMyFavorites(res[1].data);
         setIsloading(false)
       });
+    return () => {
+      console.log("123")
+    }
   }, []);
 
   return (
     <div className="App">
-
       <SideBar />
       <Switch>
         <Route exact path="/">

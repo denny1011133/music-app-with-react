@@ -5,7 +5,6 @@ import { ReactComponent as Loading } from '../images/Spinner-1s-200px.svg'
 import { Link } from "react-router-dom";
 
 function MyFavorites({ myFavorites, handleDelete, isloading }) {
-  console.log(myFavorites)
   if (isloading) {
     return <Loading />
   } else {
