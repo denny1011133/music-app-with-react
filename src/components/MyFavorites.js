@@ -20,7 +20,7 @@ function MyFavorites({ myFavorites, handleDelete, isloading }) {
         }}
       >
         <h1>還沒有喜歡的音樂嗎?。</h1>
-        <Link to="/albums"> 前往瀏覽音樂庫</Link>
+        <Link to="/musicApp/albums"> 前往瀏覽音樂庫</Link >
       </div>
     } else {
       return (

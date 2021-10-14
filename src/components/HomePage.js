@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 
 function HomePage() {
+  let { path } = useRouteMatch();
+
   return (
     <div
       style={{
@@ -12,8 +15,8 @@ function HomePage() {
         alignItems: "center",
       }}
     >
-      <h1>午安，奕德。</h1>
-      <Link to="/albums"> 前往瀏覽音樂庫</Link>
+      <h1>晚安</h1>
+      <Link to={`${path}/albums`}>前往瀏覽音樂庫</Link>
 
     </div>
   );
