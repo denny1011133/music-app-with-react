@@ -3,7 +3,6 @@ import { useRouteMatch } from "react-router-dom";
 
 function HomePage({ username }) {
   let { path } = useRouteMatch();
-
   return (
     <div
       style={{

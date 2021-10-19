@@ -16,7 +16,7 @@
       "artist": "拍謝少年",
       "description": "在上山下海、提名金曲獎的生猛《海口味》之後，拍謝少年回歸日時上班領薪水，暗時熱炒唸歌詩的青年生活。少年仔炙熱的橫衝直撞，逐漸轉化成青年內斂的透徹目光；從台語搖滾繼續出發，拍謝少年精煉寫作能力，探索更多樣化的編曲可能性，在本格的豪邁音色中，加入藍調民謠、廟會唸歌、重唱和聲等元素，更以同步錄音的製作方式，保留拍謝少年現場演出生猛氣味。",
       "isShown": true,
-      "isAdd": true,
+      "isAdd": false,
       "type": "punk",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/27/c9/ee/27c9eeb2-333a-5470-29ad-dfb2c9d9028b/887375519852.jpg/500x500bb.webp"
     },
@@ -81,14 +81,5 @@
       "image": "https://lineimg.omusic.com.tw/img/album/1765745.jpg?v=20210826174026"
     }
   ],
-  "myFavorites": [
-    {
-      "id": "2",
-      "name": "兄弟沒夢不應該",
-      "artist": "拍謝少年",
-      "description": "在上山下海、提名金曲獎的生猛《海口味》之後，拍謝少年回歸日時上班領薪水，暗時熱炒唸歌詩的青年生活。少年仔炙熱的橫衝直撞，逐漸轉化成青年內斂的透徹目光；從台語搖滾繼續出發，拍謝少年精煉寫作能力，探索更多樣化的編曲可能性，在本格的豪邁音色中，加入藍調民謠、廟會唸歌、重唱和聲等元素，更以同步錄音的製作方式，保留拍謝少年現場演出生猛氣味。",
-      "type": "punk",
-      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/27/c9/ee/27c9eeb2-333a-5470-29ad-dfb2c9d9028b/887375519852.jpg/500x500bb.webp"
-    }
-  ]
+  "myFavorites": []
 }

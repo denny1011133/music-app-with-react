@@ -11,20 +11,26 @@ function App() {
 
   useEffect(() => {
 
+
+
     // 初始化 Facebook SDK
     window.fbAsyncInit = function () {
       window.FB.init({
-        appId: '858332904867034',
+        appId: process.env.REACT_APP_FB_APP_ID,
         cookie: true,
         xfbml: true,
-        version: 'v12.0'
+        version: process.env.REACT_APP_FB_APP_VERSION
       });
 
       // 取得使用者目前登入狀態
       window.FB.getLoginStatus(function (response) {
         setResponse(response);
-      });
 
+        if (response.status === "connected") {
+          handleFetchUser()
+        }
+
+      });
 
       window.FB.AppEvents.logPageView();
 
