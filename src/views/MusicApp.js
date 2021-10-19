@@ -16,7 +16,7 @@ import { getAlLMusics, switchIsAddToTrue, switchIsAddToFalse } from "./../apis/a
 
 library.add(fab, fas, far);
 
-function MusicApp() {
+function MusicApp({ handleFBLogout, username }) {
     let { path } = useRouteMatch();
 
     const [inputValue, setInputValue] = useState("");
@@ -112,7 +112,7 @@ function MusicApp() {
             <SideBar />
             <Switch>
                 <Route exact path={path}>
-                    <HomePage />
+                    <HomePage username={username}/>
                 </Route>
                 <Route path={`${path}/albums`}>
                     <Musics
@@ -121,6 +121,7 @@ function MusicApp() {
                         handleAdd={handleAdd}
                         handleSearch={handleSearch}
                         isloading={isloading}
+
                     />
                 </Route>
                 <Route path={`${path}/myFavorites`}>
@@ -130,7 +131,7 @@ function MusicApp() {
                     <NoMatch />
                 </Route>
             </Switch>
-            <Footer />
+            <Footer handleFBLogout={handleFBLogout} />
         </div>
     );
 }
