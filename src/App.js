@@ -15,13 +15,7 @@ function App() {
 
   const isAtLoginPage = useRouteMatch('/login');
 
-  //第一次 response 預設為undefined，待FB SDK 初始化完成。
-  if (!response) {
-
-    return <></>
-  }
-
-  if (response.status !== 'connected' && !isAtLoginPage) {
+  if (response?.status !== 'connected' && !isAtLoginPage) {
     return <Redirect to="/login" />;
   }
 
@@ -30,13 +24,13 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          {response.status === 'connected' ? <Redirect to="/musicApp" /> : <Redirect to="/login" />}
+          {response?.status === 'connected' ? <Redirect to="/musicApp" /> : <Redirect to="/login" />}
         </Route>
         <Route path="/musicApp">
           <MusicApp handleFBLogout={handleFBLogout} username={username} handleFetchUser={handleFetchUser} />
         </Route>
         <Route path="/login">
-          <Login handleFBLogin={handleFBLogin} status={response.status} />
+          <Login handleFBLogin={handleFBLogin} status={response?.status} />
         </Route>
         <Route path="*">
           <h1>404 Not Found.</h1>
