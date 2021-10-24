@@ -2,6 +2,9 @@
 
 本專案以 React 作為核心的練習題目，並使用 Creat-react-app 建置。
 
+![Alt demo](https://i.imgur.com/dtCtc0w.png)
+
+
 ## 開發功能
 
 * 可瀏覽目前音樂庫裡所有的音樂。
@@ -22,4 +25,14 @@
 
 ## Demo by GIF 
 
- 因本專案屬前端專案，無實際後端的資料庫介接
+ 因本專案屬前端專案，無實際後端的資料庫介接，故以GIF展示成果。
+
+ [GIF Demo](https://imgur.com/a/awOdb90)
+ 
+ ## 想要至本地端查看的話可以先下載本專案至自己的資料夾，並以下步驟開啟即可
+
+     1. npm install. (下載所需套件)
+     
+     2. npm start. （開啟專案）
+     
+     3. json-server --watch db.json --port 3002 （開啟模擬server）
