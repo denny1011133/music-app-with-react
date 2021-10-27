@@ -31,8 +31,16 @@
  
  ## 想要至本地端查看的話可以先下載本專案至自己的資料夾，並以下步驟開啟即可
 
-     1. npm install. (下載所需套件)
+     1. git clone https://github.com/denny1011133/music-app-with-react.git (下載至本地資料夾)
      
-     2. npm start. （開啟專案）
+     2. npm install (安裝所需套件)
      
-     3. json-server --watch db.json --port 3002 （開啟模擬server）
+     3. 請依執行的環境不同開啟 set the HTTPS environment variable and run dev server.
+        3-1.  set HTTPS=true&&npm start   if you are using Windows (cmd.exe)
+        3-2.  ($env:HTTPS = "true") -and (npm start)        if you are using Windows (Powershell)
+        3-3.  HTTPS=true npm start   if you are using Linux, macOS (Bash)
+        
+     4. 開啟模擬server  json-server --watch db.json --port 3002
+     
+     
+        
