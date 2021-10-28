@@ -1,6 +1,6 @@
 # 音樂收藏網站
 
-本專案以 React 作為核心的練習題目，並使用 Creat-react-app 建置。
+本專案以 React 作為核心的練習題目，並使用 Create React App 建置。
 
 ![Alt demo](https://i.imgur.com/dtCtc0w.png)
 
@@ -16,31 +16,43 @@
 
 ## 技術與套件使用
 
-* json-server 模擬後端 API 串接。
-* react-boostrap 完成大部分 UI 外觀。
+* json-server 模擬 RESTful API 串接。
+* React-Bootstrap 完成大部分 UI 。
 * react-router-dom 實作路由切換功能。
-* react-fontawesome 完成大部分 icon 樣式 。
-* clsx 動態顯示 className。
-* styled-component 攥寫 css-in-JS 。
+* react-fontawesome 完成大部分 icon 。
+* clsx 實現動態顯示 className。
+* styled-component 撰寫 css-in-JS 。
 
-## Demo by GIF 
+## Demo 
 
  因本專案屬前端專案，無實際後端的資料庫介接，故以GIF展示成果。
 
  [GIF Demo](https://imgur.com/a/awOdb90)
  
- ## 想要至本地端查看的話可以先下載本專案至自己的資料夾，並以下步驟開啟即可
+## Installation
 
-     1. git clone https://github.com/denny1011133/music-app-with-react.git (下載至本地資料夾)
+1. 下載至本地資料夾
+```bash
+git clone https://github.com/denny1011133/music-app-with-react.git 
+```
+2. 安裝所需套件
+```bash
+npm install 
+```
+
+
+3. 請依執行的環境不同開啟dev server
+```bash
+  * Windows (cmd.exe) 👉 set HTTPS=true&&npm start   
+  * Windows (Powershell) 👉 ($env:HTTPS = "true") -and (npm start)       
+  * Linux, macOS (Bash) 👉  HTTPS=true npm start   
+```
+4. 開啟模擬server
+```bash
+  json-server --watch db.json --port 3002
+```
      
-     2. npm install (安裝所需套件)
-     
-     3. 請依執行的環境不同開啟 set the HTTPS environment variable and run dev server.
-        3-1.  set HTTPS=true&&npm start   if you are using Windows (cmd.exe)
-        3-2.  ($env:HTTPS = "true") -and (npm start)        if you are using Windows (Powershell)
-        3-3.  HTTPS=true npm start   if you are using Linux, macOS (Bash)
-        
-     4. 開啟模擬server  json-server --watch db.json --port 3002
+  
      
      
         
